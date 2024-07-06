@@ -1,0 +1,174 @@
+  <!-- Creating a registration form for clients who want to register for a gym membership -->
+<!DOCTYPE html>
+
+<head> 
+  <!-- This makes the webpage responsive. The webpage will automatically adjust to different device screen sizes and viewports. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <!-- Importing icons library -->
+  <script src="https://kit.fontawesome.com/877eed692e.js" crossorigin="anonymous"></script>
+</head>
+
+<style> 
+/* Styling header */
+.header {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 25px;
+}
+/* Styling body */
+body {
+  background-color: #F0F3F4;
+  font-family: Georgia;
+  font-size: 17px;
+}
+/* Styling logo */
+.logo {
+    display: flex;
+    justify-content: center;
+}
+/* Styling form */
+.formdiv {
+  width: 50%;
+  margin: auto;
+  border-radius: 5px;
+  backdrop-filter: blur (20px);
+  background: linear-gradient(30deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%, rgba(0,255,255,0.4) 100%);
+  padding: 20px;
+  border-style: solid;
+  border-width: medium;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* Styling form header */
+.formdiv h1 {
+  text-align: center;
+}
+/* Styling select input fields */
+input, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Styling submit button */
+input[type=submit] {
+width: 33%;
+display: block;
+margin : 0 auto;
+margin-top: 8px;
+background-color: black;
+color: aqua;
+border: none
+}
+/* Styling submit button when mouse pointer hovers over it */
+input[type=submit]:hover {
+  background-color: aqua;
+  color: black;
+  cursor: pointer;
+} 
+
+
+/* Hides Input Number Arrows in Chrome, Safari, Edge, Opera*/ 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hides Input Number Arrows in Firefox*/ 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+</style>
+
+<html>
+<!-- Creating header with the logo image -->
+<header class="header" id="header">
+<div class="logo"> <img src="logo.png"> </div>
+</header>
+
+<body>
+<!-- Creating form -->
+<div class="formdiv">
+  <form onsubmit=" return successMessage();" action="process-form.php" method="post">
+    <h1>Registration Form</h1>
+
+    <label for="fname"><i class="fa fa-user"></i> First Name:</label>
+    <input type="text" id="fname" name="firstname" placeholder="First Name" required>
+
+    <label for="lname"><i class="fa fa-user"></i> Last Name:</label>
+    <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+
+    <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+    <input type="email" id="email" name="email" placeholder="Email" required>
+
+    <label for="birthday"><i class="fa-solid fa-cake-candles"></i> Birthday:</label>
+    <input type="date" id="birthday" name="birthday" placeholder="Birthday" required>
+
+    <label for="gender"><i class="fa-regular fa-user"></i> Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label for="phone"><i class="fa-solid fa-phone"></i> Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+    <label for="address"><i class="fa-solid fa-house"></i> Address:</label>
+    <input type="text" id="address" name="address" placeholder="Address"required>
+
+    <label for="creditcard"><i class="fa-solid fa-credit-card"></i> Credit Card Number:</label>
+    <input type="text" id="creditcard" name="creditcard" placeholder="0000-0000-0000-0000" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" required>
+
+    <label for="expirydate">Credit Card Expiry Date:</label>
+    <input type="number" id="expirydate" name="expirydate" placeholder="MMYY" pattern="[0-9]{2}[0-9]{2}" required>
+
+    <label for="cvv">CVV:</label>
+    <input type="number" id="cvv" name="cvv" placeholder="000" pattern="[0-9]{3}" required>
+
+    <label for="membership"><i class="fa-solid fa-dumbbell"></i> Membership:</label>
+    <select id="membership" name="membership" required>
+      <option value="Monthly">Monthly (30$/month)</option>
+      <option value="SixMonths">6 Months (one-time payment of 159.99$)</option>
+    </select>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+
+</html>
+
+<script>
+
+    //Hides header when user scrolls down
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("header").style.top = "0";
+      } else {
+        document.getElementById("header").style.top = "-50px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+    //The popup message which the user sees upon succesfully submitting his registration form
+    function successMessage() {
+      alert("You have successfully completed your registration!\nThank you for being part of the GuaranteedSpeed family!");
+    }  
+
+    </script>
